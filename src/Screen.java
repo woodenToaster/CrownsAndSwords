@@ -24,6 +24,12 @@ public class Screen {
 	}
 	public int getHeight() {return height;}
 	public int getWidth() {return width;}
+	public void setHeight(int h) {
+		height = h;
+	}
+	public void setWidth(int w) {
+		width = w;
+	}
 	public Boolean isCloseRequested() {
 		return Display.isCloseRequested();
 	}
