@@ -6,6 +6,6 @@ public final class CrownsAndSwords {
 	
 	public static void main(String[] args) {
 		
-		new Screen().start();
+		new Game(800, 600).mainLoop();
 	}
 }

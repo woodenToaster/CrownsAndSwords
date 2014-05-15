@@ -4,16 +4,20 @@ abstract class Piece {
 
 	protected int x;
 	protected int y;
+	protected int attackPower;
 	protected Boolean alive;
 	protected Boolean selected;
 	protected Image image;
 	protected String owner;
 	
-	protected Piece() {
+	protected Piece(String owner) {
 		
+		attackPower = 1;
+		this.owner = owner;
 		alive = true;
 		selected = false;
 		image = null;
+		x = this.owner.equals("player") ? 1 : 5;
 	}
 	public int getX() { return x; }
 	public int getY() { return y; }

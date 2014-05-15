@@ -4,10 +4,15 @@ import org.lwjgl.opengl.DisplayMode;
 
 public class Screen {
 	
-	public void start() {
+	int height;
+	int width;
+	
+	public Screen(int x, int y) {
 		
+		height = y;
+		width = x;
 		try {
-			Display.setDisplayMode(new DisplayMode(800, 600));
+			Display.setDisplayMode(new DisplayMode(width, height));
 			Display.setTitle("Crowns and Swords");
 			Display.create();
 		}
@@ -16,10 +21,16 @@ public class Screen {
 			lwjgle.printStackTrace();
 			System.exit(0);
 		}
-		
-		while(!Display.isCloseRequested()) {
-			Display.update();
-		}
+	}
+	public int getHeight() {return height;}
+	public int getWidth() {return width;}
+	public Boolean isCloseRequested() {
+		return Display.isCloseRequested();
+	}
+	public void update() {
+		Display.update();
+	}
+	public void destroy() {
 		Display.destroy();
 	}
 }
