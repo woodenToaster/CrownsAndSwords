@@ -1,4 +1,4 @@
-import org.newdawn.slick.Image;
+
 
 abstract class Piece {
 
@@ -7,7 +7,6 @@ abstract class Piece {
 	protected int attackPower;
 	protected Boolean alive;
 	protected Boolean selected;
-	protected Image image;
 	protected String owner;
 	
 	protected Piece(String owner) {
@@ -16,14 +15,12 @@ abstract class Piece {
 		this.owner = owner;
 		alive = true;
 		selected = false;
-		image = null;
 		x = this.owner.equals("player") ? 1 : 5;
 	}
 	public int getX() { return x; }
 	public int getY() { return y; }
 	public Boolean isAlive() { return alive; }
 	public Boolean isSelected() { return selected; }
-	public Image getImage() { return image; }
 	public String getOwne() { return owner; }
 	
 	public void setX(int x) {
