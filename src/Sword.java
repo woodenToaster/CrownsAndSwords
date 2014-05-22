@@ -1,24 +1,33 @@
+import java.awt.BorderLayout;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 
 class Sword extends Piece {
 	
-	int id;
+	private int id;
+	private static final ImageIcon playerSword = new ImageIcon("res/hugeSwordUp.png");
+	private static final ImageIcon computerSword = new ImageIcon("res/hugeSwordDown.png");
+	
 	Sword(int id, String owner) {
-		
 		super(owner);
-		//set image
 		this.id = id;
 		y = this.id > 2 ? this.id + 1 : this.id;
 	}
+	
+	public static ImageIcon getPlayerSwordImage() {return playerSword;}
+	public static ImageIcon getComputerSwordImage() {return computerSword;}
+	
 	@Override
-	public void move(int x, int y) {
-		
+	public void movePiece(int x, int y) {
 		//check for valid move
 		
 		//update Board state
 	}
 	@Override
 	public void attack(Piece piece) {
-		
 		//check for valid attack
 		
 		//resolve attack
@@ -27,7 +36,6 @@ class Sword extends Piece {
 	}
 	@Override
 	public void captured(Piece capturedBy) {
-		
 		alive = false;
 		//check for win
 		

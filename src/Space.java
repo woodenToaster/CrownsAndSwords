@@ -26,7 +26,7 @@ public class Space extends JPanel {
 	public static Color getDark() {return dark;}
 	public static Color getLight() {return light;}
 	
-	public void setClicked(boolean b) {
-		clicked = b;
-	}
+	public void setOccupied(boolean b) {occupied = b;}
+	public void setClicked(boolean b) {clicked = b;}
+	public void setPiece(Piece p) {piece = p;}
 }

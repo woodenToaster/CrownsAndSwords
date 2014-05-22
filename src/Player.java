@@ -19,4 +19,6 @@ public class Player {
 	void submitMove(Piece piece, int x, int y) {
 		//TODO: implement this mug
 	}
+	public Sword[] getSwords() {return swords;}
+	
 }

@@ -1,6 +1,9 @@
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 
-abstract class Piece {
+
+abstract class Piece extends JPanel {
 
 	protected int x;
 	protected int y;
@@ -8,6 +11,7 @@ abstract class Piece {
 	protected Boolean alive;
 	protected Boolean selected;
 	protected String owner;
+	
 	
 	protected Piece(String owner) {
 		
@@ -21,7 +25,7 @@ abstract class Piece {
 	public int getY() { return y; }
 	public Boolean isAlive() { return alive; }
 	public Boolean isSelected() { return selected; }
-	public String getOwne() { return owner; }
+	public String getOwner() { return owner; }
 	
 	public void setX(int x) {
 		
@@ -44,7 +48,7 @@ abstract class Piece {
 		this.owner = owner;
 	}
 	
-	abstract void move(int x, int y);
+	abstract void movePiece(int x, int y);
 	abstract void attack(Piece piece);
 	abstract void captured(Piece capturedBy);
 }

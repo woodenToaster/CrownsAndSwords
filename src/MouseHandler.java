@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 public class MouseHandler extends MouseAdapter {
 	
 	private Space clickedSpace;
+	private boolean spaceSelected;
 	
 	
 	@Override
@@ -25,7 +26,7 @@ public class MouseHandler extends MouseAdapter {
 		else {
 			if (clickedSpace.getClicked() == false) {
 				clickedSpace.setClicked(true);
-				clickedSpace.setBackground(Space.getLight().darker());
+				clickedSpace.setBackground(Space.getLight().brighter());
 			}
 
 			else {
