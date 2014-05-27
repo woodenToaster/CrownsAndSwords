@@ -20,5 +20,6 @@ public class Player {
 		//TODO: implement this mug
 	}
 	public Sword[] getSwords() {return swords;}
+	public Crown getCrown() {return crown;}
 	
 }

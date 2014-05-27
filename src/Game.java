@@ -22,7 +22,7 @@ public class Game extends JFrame {
 	private Input input;
 	private JLayeredPane layeredPane;
 	private JPanel board;
-	private List<Space> spaces;
+	private static List<Space> spaces;
 	
 	public Game(int w, int h) {
 		
@@ -42,10 +42,21 @@ public class Game extends JFrame {
 			squares[i] = new Space(i + 1);
 			if(i < 5) squares[i].setOccupied(true);
 			if(i > 19) squares[i].setOccupied(true);
-			if(i < 5 && i != 2) squares[i].setPiece(players[0].getSwords()[i]);
-			if(i > 19 && i != 22) squares[i].setPiece(players[1].getSwords()[i]);
-			
 		}
+		//Assign crowns to spaces
+		squares[2].setPiece(players[1].getCrown());
+		squares[22].setPiece(players[0].getCrown());
+		//Assign player's swords to spaces
+		squares[0].setPiece(players[0].getSwords()[0]);
+		squares[1].setPiece(players[0].getSwords()[1]);
+		squares[3].setPiece(players[0].getSwords()[2]);
+		squares[4].setPiece(players[0].getSwords()[3]);
+		//Assign computer's swords to spaces
+		squares[20].setPiece(players[1].getSwords()[0]);
+		squares[21].setPiece(players[1].getSwords()[1]);
+		squares[23].setPiece(players[1].getSwords()[2]);
+		squares[24].setPiece(players[1].getSwords()[3]);
+		
 		spaces = new ArrayList<>(25);
 		
 		for(Space s: squares) {
@@ -106,6 +117,44 @@ public class Game extends JFrame {
 				}
 			}
 		}
+	}
+	
+	public static int[] getPossibleMoves(Space s) {
+		int[] moves = new int[] {-1, -1, -1, -1};
+		int id = s.getID();
+		if(id % 5 != 0) {
+			//We can move left from here
+			if(!isOccupiedByFriendly(s, spaces.get(id - 1))) 
+				moves[0] = id - 1;
+			else 
+				moves[0] = -1;
+		}
+		if(id % 5 != 4) {
+			//We can move right from here
+			if(!isOccupiedByFriendly(s, spaces.get(id + 1))) 
+				moves[1] = id + 1;
+			else 
+				moves[1] = -1;
+		}
+		if(id != 0 && id != 1 && id != 2 && id != 3 && id != 4) {
+			//We can move up from here
+			if(!isOccupiedByFriendly(s, spaces.get(id - 5))) 
+				moves[2] = id - 5;
+			else 
+				moves[2] = -1;
+		}
+		if(id != 20 && id != 21 && id != 22 && id != 23 && id != 24) {
+			//We can move down from here
+			if(!isOccupiedByFriendly(s, spaces.get(id + 5))) 
+				moves[3] = id + 5;
+			else 
+				moves[3] = -1;
+		}
+		return moves;
+	}
+	
+	public static boolean isOccupiedByFriendly(Space current, Space next) {
+		return next.isOccupied() && next.getPiece().getOwner() == current.getPiece().getOwner();
 	}
 	public void mainLoop() {
 		
